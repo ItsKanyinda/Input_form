@@ -10,7 +10,7 @@ document.getElementById('dataForm').addEventListener('submit', async (e) => {
     messageDiv.className = 'message';
 
     const formData = {
-        fullname: document.getElementById('fullname').value,
+        fullname: document.getElementById('full_name').value,
         serial_number: document.getElementById('serial_number').value,
         card_number: document.getElementById('card_number').value,
         title: document.getElementById('title').value,
