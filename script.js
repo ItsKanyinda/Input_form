@@ -24,7 +24,7 @@ document.getElementById('dataForm').addEventListener('submit', async (e) => {
 
     try {
         const { data, error } = await supabase
-            .from('your_table_name') // Replace with your table name
+            .from('DCWC_Data_New') // Replace with your table name
             .insert([formData]);
 
         if (error) {
