@@ -30,9 +30,7 @@ document.getElementById('dataForm').addEventListener('submit', async (e) => {
             .insert([formData]);
 
         if (error) {
-            console.error('Error:', error.message);
-            messageDiv.textContent = 'Error: ' + error.message;
-            messageDiv.classList.add('error');
+            handleError(error);
         } else {
             messageDiv.textContent = 'Data submitted successfully!';
             messageDiv.classList.add('success');
@@ -40,7 +38,26 @@ document.getElementById('dataForm').addEventListener('submit', async (e) => {
         }
     } catch (err) {
         console.error('Unexpected error:', err);
-        messageDiv.textContent = 'Unexpected error occurred!';
+        messageDiv.textContent = 'Unexpected error occurred! Please try again later.';
         messageDiv.classList.add('error');
     }
 });
+
+// Function to handle and display errors
+function handleError(error) {
+    console.error('Error:', error.message);
+    
+    let errorMessage;
+    
+    if (error.code === '23505') { // Unique violation (e.g., duplicate entry)
+        errorMessage = 'This entry already exists. Please check your data.';
+    } else if (error.code === '22P02') { // Invalid input syntax
+        errorMessage = 'There was an issue with the input data. Please check your entries.';
+    } else {
+        errorMessage = 'An error occurred: ' + error.message;
+    }
+
+    const messageDiv = document.getElementById('message');
+    messageDiv.textContent = errorMessage; // Display the specific error message
+    messageDiv.classList.add('error');
+}
