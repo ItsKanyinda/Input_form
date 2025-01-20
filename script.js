@@ -3,7 +3,7 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 document.getElementById('dataForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission
 
     const messageDiv = document.getElementById('message');
     messageDiv.textContent = ''; // Clear previous messages
@@ -34,7 +34,7 @@ document.getElementById('dataForm').addEventListener('submit', async (e) => {
         } else {
             messageDiv.textContent = 'Data submitted successfully!';
             messageDiv.classList.add('success');
-            document.getElementById('dataForm').reset();
+            document.getElementById('dataForm').reset(); // Reset the form
         }
     } catch (err) {
         console.error('Unexpected error:', err);
