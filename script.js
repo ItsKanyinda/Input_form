@@ -1,3 +1,4 @@
+// Import the createClient method from the Supabase library
 import { createClient } from '@supabase/supabase-js';
 
 const SUPABASE_URL = 'https://nggucsasyksohvjnjzru.supabase.co'; // Replace with your Supabase URL
@@ -46,9 +47,9 @@ document.getElementById('dataForm').addEventListener('submit', async (e) => {
 // Function to handle and display errors
 function handleError(error) {
     console.error('Error:', error.message);
-    
+
     let errorMessage;
-    
+
     if (error.code === '23505') { // Unique violation (e.g., duplicate entry)
         errorMessage = 'This entry already exists. Please check your data.';
     } else if (error.code === '22P02') { // Invalid input syntax
