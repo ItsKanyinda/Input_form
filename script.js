@@ -1,4 +1,4 @@
-// Import the createClient method from the Supabase library
+// Import the createClient method from the Supabase library //
 import { createClient } from '@supabase/supabase-js';
 
 const SUPABASE_URL = 'https://nggucsasyksohvjnjzru.supabase.co'; // Replace with your Supabase URL
